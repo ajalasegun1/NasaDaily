@@ -9,29 +9,15 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  FlatList,
-  FlatListProps,
-} from 'react-native';
-import Apod from './components/Apod';
-import MyText from './components/themed/MyText';
+import {StyleSheet} from 'react-native';
+import RootStack from './src/navigation/RootStack';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <SafeAreaView>
-        <ScrollView bounces={false} contentContainerStyle={{height: '100%'}}>
-          <Apod />
-        </ScrollView>
-      </SafeAreaView>
-    </View>
+    <SafeAreaProvider>
+      <RootStack />
+    </SafeAreaProvider>
   );
 };
 
@@ -39,9 +25,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 8,
-  },
-  text: {
-    color: 'green',
   },
 });
 

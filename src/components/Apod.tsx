@@ -1,15 +1,22 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Pressable} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import config from '../config';
-import MyText from './themed/MyText';
-import {HEIGHT} from '../constants';
 import dayjs from 'dayjs';
 import FastImage from 'react-native-fast-image';
+import {HEIGHT} from '../constants';
+import MyText from './themed/MyText';
+import config from '../config';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../navigation/RootStack';
 
 const Apod = () => {
+  const navigation =
+    useNavigation<
+      NativeStackNavigationProp<RootStackParamList, 'PotdDetailsScreen'>
+    >();
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<null | {[key: string]: any}>(null);
+  const [data, setData] = useState<null | {[key: string]: any}>({});
   useEffect(() => {
     fetchPOD();
   }, []);
@@ -32,14 +39,28 @@ const Apod = () => {
         {dayjs(new Date()).format('dddd D MMMM')}
       </MyText>
       <MyText style={styles.text2}>Today</MyText>
-      <View style={styles.contentHolder}>
+      <Pressable
+        style={styles.contentHolder}
+        onPress={() =>
+          navigation.navigate('PotdDetailsScreen', {
+            data: {
+              copyright: data?.copyright,
+              date: data?.date,
+              explanation: data?.explanation,
+              hdurl: data?.hdurl,
+              media_type: data?.media_type,
+              service_version: data?.service_version,
+              title: data?.title,
+              url: data?.url,
+            },
+          })
+        }>
         <View style={styles.headerHolder}>
           <MyText style={styles.textHeader}>Photo of the day</MyText>
           <MyText style={styles.textHeader2}>{data?.title}</MyText>
         </View>
         <FastImage
           source={{
-            // uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png',
             uri: data?.url,
           }}
           style={{width: '100%', height: '100%'}}
@@ -47,7 +68,7 @@ const Apod = () => {
         <View style={styles.footer}>
           <MyText numberOfLines={2}>{data?.explanation}</MyText>
         </View>
-      </View>
+      </Pressable>
     </View>
   );
 };
