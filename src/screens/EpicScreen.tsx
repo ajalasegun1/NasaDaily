@@ -6,7 +6,7 @@ import {
   FlatList,
   ActivityIndicator,
 } from 'react-native';
-import React, {FC, useMemo, useState} from 'react';
+import React, {FC, useState} from 'react';
 import MyView from '../components/MyView';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import MyText from '../components/themed/MyText';
@@ -69,7 +69,7 @@ const EpicScreen: FC<EpicScreenNavigationProp> = ({navigation}) => {
         width: WIDTH - 16,
         borderRadius: 15,
       }}>
-      {loading && <ActivityIndicator size={'small'} color={'aqua'} />}
+      {loading && <ActivityIndicator size={'small'} color={'#dddddd'} />}
     </MyView2>
   );
   return (

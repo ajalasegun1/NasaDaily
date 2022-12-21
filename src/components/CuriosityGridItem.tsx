@@ -1,28 +1,42 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 import React, {FC} from 'react';
-import {CuriosityItemType} from '../screens/CuriosityScreen';
+import {CuriosityDataType, CuriosityItemType} from '../screens/CuriosityScreen';
 import MyView3 from './MyView3';
 import {HEIGHT} from '../constants';
 import FastImage from 'react-native-fast-image';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../navigation/RootStack';
 
 type Props = {
   data: CuriosityItemType;
+  index: number;
+  fullData: CuriosityDataType;
 };
-const CuriosityGridItem: FC<Props> = ({data}) => {
-  //   console.log({data});
+type CuriosityStackProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'CuriosityFullSlide'
+>;
+const CuriosityGridItem: FC<Props> = ({data, index, fullData}) => {
+  const navigation = useNavigation<CuriosityStackProp>();
   const image333 = data.img_src;
   const image = image333.replace('http', 'https');
-  //   console.log({image});
   return (
-    <MyView3 style={styles.container}>
-      <FastImage
-        // source={{uri: data.img_src}}
-        source={{
-          uri: image,
-        }}
-        style={{width: '100%', height: '100%'}}
-      />
-    </MyView3>
+    <Pressable
+      onPress={() => {
+        console.log({index});
+        navigation.push('CuriosityFullSlide', {data: fullData, index: index});
+      }}
+      style={{flex: 1}}>
+      <MyView3 style={styles.container}>
+        <FastImage
+          source={{
+            uri: image,
+          }}
+          style={{width: '100%', height: '100%'}}
+        />
+      </MyView3>
+    </Pressable>
   );
 };
 

@@ -3,19 +3,15 @@ import {
   ListRenderItem,
   Pressable,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
-import React, {FC, ReactNode, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import config from '../config';
 import MyView from '../components/MyView';
 import axios from 'axios';
 import {FlatList} from 'react-native-gesture-handler';
 import CuriosityGridItem from '../components/CuriosityGridItem';
 import MyText from '../components/themed/MyText';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../navigation/RootStack';
-import {NavigationProp} from '@react-navigation/native';
 
 export type CuriosityDataType = Array<{
   id: number;
@@ -101,21 +97,21 @@ const CuriosityScreen = ({navigation}: any) => {
     }
   };
 
-  const renderItem: ListRenderItem<CuriosityItemType> = ({item}) => (
-    <CuriosityGridItem data={item} />
+  const renderItem: ListRenderItem<CuriosityItemType> = ({item, index}) => (
+    <CuriosityGridItem data={item} index={index} fullData={data} />
   );
 
   const renderFooter = () => (
     <MyView
       style={{alignItems: 'center', justifyContent: 'center', padding: 10}}>
-      <ActivityIndicator size="small" color="#BBBBBB" />
+      {fetching && <ActivityIndicator size="small" color="#BBBBBB" />}
     </MyView>
   );
 
   if (loading) {
     return (
       <MyView style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        {fetching && <ActivityIndicator size={'small'} color={'#BBBBBB'} />}
+        {loading && <ActivityIndicator size={'small'} color={'#BBBBBB'} />}
       </MyView>
     );
   }

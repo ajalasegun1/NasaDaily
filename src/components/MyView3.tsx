@@ -12,7 +12,6 @@ const MyView3: FC<MyViewProps2> = ({style, children}) => {
   return (
     <View
       style={[
-        // styles.container,
         {
           ...styles.container,
           backgroundColor: isDark
