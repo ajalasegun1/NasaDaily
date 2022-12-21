@@ -5,6 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from '../screens/Home';
 import PotdDetailsScreen from '../screens/PotdDetailsScreen';
 import EpicScreen from '../screens/EpicScreen';
+import CuriosityScreen from '../screens/CuriosityScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -23,6 +24,7 @@ export type RootStackParamList = {
     };
   };
   EpicScreen: undefined;
+  CuriosityScreen: undefined;
 };
 
 const RootStack = () => {
@@ -36,6 +38,7 @@ const RootStack = () => {
             name="PotdDetailsScreen"
             component={PotdDetailsScreen}
           />
+          <Stack.Screen name="CuriosityScreen" component={CuriosityScreen} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>

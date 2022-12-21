@@ -8,6 +8,7 @@ import VerticalSpace from '../components/VerticalSpace';
 import MyText from '../components/themed/MyText';
 import MyView from '../components/MyView';
 import Epic from '../components/Epic';
+import Curiosity from '../components/Curiosity';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
@@ -20,7 +21,8 @@ const Home = ({navigation}: Props) => {
           <VerticalSpace space={20} />
           <Epic />
           <VerticalSpace space={20} />
-          <MyText>Hello o</MyText>
+          <Curiosity />
+          <VerticalSpace space={20} />
         </ScrollView>
       </SafeAreaView>
       <StatusBar barStyle={'default'} />
