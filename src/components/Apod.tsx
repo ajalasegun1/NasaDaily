@@ -9,6 +9,8 @@ import config from '../config';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../navigation/RootStack';
+import MyView2 from './MyView2';
+import {textColor} from './themed/Colors';
 
 const Apod = () => {
   const navigation =
@@ -35,7 +37,7 @@ const Apod = () => {
 
   return (
     <View>
-      <MyText style={styles.text}>
+      <MyText style={[styles.text, {color: textColor.adapt2}]}>
         {dayjs(new Date()).format('dddd D MMMM')}
       </MyText>
       <MyText style={styles.text2}>Today</MyText>
@@ -63,11 +65,15 @@ const Apod = () => {
           source={{
             uri: data?.url,
           }}
-          style={{width: '100%', height: '100%'}}
+          style={{
+            width: '100%',
+            height: '100%',
+            borderRadius: 15,
+          }}
         />
-        <View style={styles.footer}>
+        <MyView2 style={styles.footer}>
           <MyText numberOfLines={2}>{data?.explanation}</MyText>
-        </View>
+        </MyView2>
       </Pressable>
     </View>
   );
@@ -84,7 +90,6 @@ const styles = StyleSheet.create({
   },
   text2: {
     fontSize: 26,
-    color: '#fff',
     letterSpacing: 2,
     fontWeight: '600',
     marginVertical: 5,
@@ -94,7 +99,7 @@ const styles = StyleSheet.create({
     height: HEIGHT / 2,
     backgroundColor: '#141414',
     borderRadius: 15,
-    overflow: 'hidden',
+    // overflow: 'hidden',
   },
   headerHolder: {
     position: 'absolute',
@@ -109,7 +114,7 @@ const styles = StyleSheet.create({
     textShadowOffset: {height: 1, width: 2},
     fontSize: 11,
     textTransform: 'uppercase',
-    // color: '#A4A4A4',
+    color: '#fff',
   },
   textHeader2: {
     textShadowColor: 'black',
@@ -118,11 +123,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textTransform: 'uppercase',
     fontWeight: '700',
-    // color: '#A4A4A4',
+    color: '#fff',
   },
   footer: {
     height: 60,
-    backgroundColor: '#141414',
+    // backgroundColor: '#141414',
     position: 'absolute',
     bottom: 0,
     left: 0,
@@ -131,5 +136,7 @@ const styles = StyleSheet.create({
     padding: 5,
     alignItems: 'center',
     justifyContent: 'center',
+    borderBottomRightRadius: 15,
+    borderBottomLeftRadius: 15,
   },
 });

@@ -1,10 +1,10 @@
-import {View, Text} from 'react-native';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Home from '../screens/Home';
 import PotdDetailsScreen from '../screens/PotdDetailsScreen';
+import EpicScreen from '../screens/EpicScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -22,6 +22,7 @@ export type RootStackParamList = {
       url: string;
     };
   };
+  EpicScreen: undefined;
 };
 
 const RootStack = () => {
@@ -29,6 +30,7 @@ const RootStack = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="EpicScreen" component={EpicScreen} />
         <Stack.Group screenOptions={{presentation: 'modal'}}>
           <Stack.Screen
             name="PotdDetailsScreen"

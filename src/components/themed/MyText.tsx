@@ -1,8 +1,9 @@
 import {StyleSheet, Text, useColorScheme, TextStyle} from 'react-native';
 import React, {FC} from 'react';
+import {textColor, textColorDark} from './Colors';
 type Props = {
   children: any;
-  style?: TextStyle;
+  style?: TextStyle | TextStyle[];
   numberOfLines?: number;
 };
 const MyText: FC<Props> = ({children, style, numberOfLines}) => {
@@ -11,7 +12,11 @@ const MyText: FC<Props> = ({children, style, numberOfLines}) => {
   return (
     <Text
       numberOfLines={numberOfLines}
-      style={[styles.text, {color: isDark ? '#fff' : '#1c1c1c'}, style]}>
+      style={[
+        styles.text,
+        {color: isDark ? textColorDark.adapt1 : textColor.adapt1},
+        style,
+      ]}>
       {children}
     </Text>
   );

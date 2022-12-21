@@ -5,6 +5,8 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import FastImage from 'react-native-fast-image';
 import {HEIGHT} from '../constants';
 import MyText from '../components/themed/MyText';
+import MyView from '../components/MyView';
+import {textColor} from '../components/themed/Colors';
 
 type ScreenProp = NativeStackScreenProps<
   RootStackParamList,
@@ -15,17 +17,23 @@ const PotdDetailsScreen = ({route}: ScreenProp) => {
   const {data} = route.params;
   console.log(data);
   return (
-    <View style={styles.container}>
+    <MyView style={styles.container}>
       <ScrollView>
         <View style={styles.imageHolder}>
           <FastImage
             source={{uri: data?.hdurl}}
             style={{width: '100%', height: '100%'}}
           />
-          <View style={styles.titleHolder}>
+          {/* <View style={styles.titleHolder}>
             <MyText style={styles.title}>{data?.title}</MyText>
             <MyText style={styles.copyright}>{data?.copyright}</MyText>
-          </View>
+          </View> */}
+        </View>
+        <View style={styles.titleHolder}>
+          <MyText style={styles.title}>{data?.title}</MyText>
+          <MyText style={[styles.copyright, {color: textColor.adapt2}]}>
+            {data?.copyright}
+          </MyText>
         </View>
         <View style={styles.desc}>
           <MyText style={styles.text}>
@@ -34,7 +42,7 @@ const PotdDetailsScreen = ({route}: ScreenProp) => {
           </MyText>
         </View>
       </ScrollView>
-    </View>
+    </MyView>
   );
 };
 
@@ -43,7 +51,7 @@ export default PotdDetailsScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#141414',
+    // backgroundColor: '#141414',
   },
   imageHolder: {
     width: '100%',
@@ -53,26 +61,23 @@ const styles = StyleSheet.create({
   },
   titleHolder: {
     padding: 10,
-    height: 60,
-    zIndex: 2,
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    justifyContent: 'center',
+    // height: 60,
+    // zIndex: 2,
+    // position: 'absolute',
+    // bottom: 0,
+    // left: 0,
+    // right: 0,
+    // justifyContent: 'center',
   },
   title: {
-    textShadowColor: 'black',
-    textShadowRadius: 6,
-    textShadowOffset: {height: 1, width: 2},
+    // textShadowColor: 'black',
+    // textShadowRadius: 6,
+    // textShadowOffset: {height: 1, width: 2},
     fontSize: 30,
     textTransform: 'uppercase',
     fontWeight: '700',
   },
   copyright: {
-    textShadowColor: 'black',
-    textShadowRadius: 6,
-    textShadowOffset: {height: 1, width: 2},
     fontWeight: '500',
   },
   desc: {

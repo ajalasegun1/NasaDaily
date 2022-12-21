@@ -1,21 +1,30 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet, StatusBar, Platform} from 'react-native';
 import React from 'react';
 import Apod from '../components/Apod';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../navigation/RootStack';
+import VerticalSpace from '../components/VerticalSpace';
+import MyText from '../components/themed/MyText';
+import MyView from '../components/MyView';
+import Epic from '../components/Epic';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 const Home = ({navigation}: Props) => {
   return (
-    <View style={styles.container}>
+    <MyView style={styles.container}>
       <SafeAreaView>
-        <ScrollView bounces={false} contentContainerStyle={{height: '100%'}}>
+        <ScrollView bounces={false}>
           <Apod />
+          <VerticalSpace space={20} />
+          <Epic />
+          <VerticalSpace space={20} />
+          <MyText>Hello o</MyText>
         </ScrollView>
       </SafeAreaView>
-    </View>
+      <StatusBar barStyle={'default'} />
+    </MyView>
   );
 };
 
@@ -25,6 +34,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 8,
-    backgroundColor: 'black',
   },
 });
