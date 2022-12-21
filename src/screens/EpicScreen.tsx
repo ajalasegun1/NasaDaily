@@ -98,7 +98,6 @@ const EpicScreen: FC<EpicScreenNavigationProp> = ({navigation}) => {
             onPress={() => setOpen(true)}
           />
           <VerticalSpace space={8} />
-          <VerticalSpace space={8} />
           <Button title="Search" onPress={() => getEpic()} />
         </MyView2>
         <VerticalSpace space={8} />

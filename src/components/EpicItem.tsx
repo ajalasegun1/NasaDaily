@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     width: WIDTH - 40,
     borderRadius: 15,
     marginRight: 8,
+    marginBottom: 8,
   },
   details: {
     fontSize: 15,
