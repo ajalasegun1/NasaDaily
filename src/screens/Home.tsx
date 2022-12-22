@@ -9,6 +9,7 @@ import MyText from '../components/themed/MyText';
 import MyView from '../components/MyView';
 import Epic from '../components/Epic';
 import Curiosity from '../components/Curiosity';
+import SearchNasa from '../components/SearchNasa';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
@@ -22,6 +23,8 @@ const Home = ({navigation}: Props) => {
           <Epic />
           <VerticalSpace space={20} />
           <Curiosity />
+          <VerticalSpace space={20} />
+          <SearchNasa />
           <VerticalSpace space={20} />
         </ScrollView>
       </SafeAreaView>
