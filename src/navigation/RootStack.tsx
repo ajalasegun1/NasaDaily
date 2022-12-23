@@ -7,7 +7,8 @@ import PotdDetailsScreen from '../screens/PotdDetailsScreen';
 import EpicScreen from '../screens/EpicScreen';
 import CuriosityScreen, {CuriosityDataType} from '../screens/CuriosityScreen';
 import CuriosityFullSlide from '../screens/CuriosityFullSlide';
-import SearchScreen from '../screens/SearchScreen';
+import SearchScreen, {ResultItemType} from '../screens/SearchScreen';
+import SearchDetailsScreen from '../screens/SearchDetailsScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -32,6 +33,7 @@ export type RootStackParamList = {
     index?: number;
   };
   SearchScreen: undefined;
+  SearchDetailsScreen: ResultItemType;
 };
 
 const RootStack = () => {
@@ -41,6 +43,10 @@ const RootStack = () => {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="EpicScreen" component={EpicScreen} />
         <Stack.Screen name="SearchScreen" component={SearchScreen} />
+        <Stack.Screen
+          name="SearchDetailsScreen"
+          component={SearchDetailsScreen}
+        />
         <Stack.Group screenOptions={{presentation: 'modal'}}>
           <Stack.Screen
             name="PotdDetailsScreen"

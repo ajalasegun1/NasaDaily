@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 import React, {FC} from 'react';
 import {ResultItemType, ResultType} from '../screens/SearchScreen';
 import MyView2 from './MyView2';
@@ -6,29 +6,38 @@ import {HEIGHT} from '../constants';
 import FastImage from 'react-native-fast-image';
 import MyText from './themed/MyText';
 import {BlurView} from '@react-native-community/blur';
-
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../navigation/RootStack';
+import {useNavigation} from '@react-navigation/native';
+type SearchItemNavProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'SearchDetailsScreen'
+>;
 type Props = {item: ResultItemType};
 const SearchItem: FC<Props> = ({item}) => {
   console.log({item: item.links[0].href});
+  const navigation = useNavigation<SearchItemNavProp>();
   return (
-    <MyView2 style={styles.container}>
-      <FastImage
-        source={{uri: item.links[0].href}}
-        style={{width: '100%', height: '100%', borderRadius: 15}}
-      />
-      <BlurView
-        style={styles.blurContainer}
-        blurType="dark"
-        blurAmount={3}
-        blurRadius={30}>
-        <MyText style={[{color: 'white'}, styles.heading]} numberOfLines={2}>
-          {item.data[0].title}
-        </MyText>
-        <MyText style={styles.desc} numberOfLines={2}>
-          {item.data[0].description}
-        </MyText>
-      </BlurView>
-    </MyView2>
+    <Pressable onPress={() => navigation.push('SearchDetailsScreen', item)}>
+      <MyView2 style={styles.container}>
+        <FastImage
+          source={{uri: item.links[0].href}}
+          style={{width: '100%', height: '100%', borderRadius: 15}}
+        />
+        <BlurView
+          style={styles.blurContainer}
+          blurType="dark"
+          blurAmount={3}
+          blurRadius={30}>
+          <MyText style={[{color: 'white'}, styles.heading]} numberOfLines={2}>
+            {item.data[0].title}
+          </MyText>
+          <MyText style={styles.desc} numberOfLines={2}>
+            {item.data[0].description}
+          </MyText>
+        </BlurView>
+      </MyView2>
+    </Pressable>
   );
 };
 
