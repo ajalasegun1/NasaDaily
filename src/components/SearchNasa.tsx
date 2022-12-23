@@ -1,35 +1,45 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import MyView2 from './MyView2';
 import {HEIGHT} from '../constants';
 import FastImage from 'react-native-fast-image';
 import {BlurView} from '@react-native-community/blur';
 import MyText from './themed/MyText';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../navigation/RootStack';
 
+type SearchNasaNavigationType = NativeStackNavigationProp<
+  RootStackParamList,
+  'SearchScreen'
+>;
 const SearchNasa = () => {
+  const navigation = useNavigation<SearchNasaNavigationType>();
   return (
-    <MyView2 style={styles.container}>
-      <FastImage
-        source={{
-          uri: 'https://cdn.arstechnica.net/wp-content/uploads/2022/04/SLS-Apr-21-2022-8868-800x534.jpg',
-        }}
-        style={{height: '100%', width: '100%', borderRadius: 15}}
-      />
-      <View style={styles.overlay}>
-        <BlurView
-          style={styles.blurContainer}
-          blurType="dark"
-          blurAmount={6}
-          blurRadius={30}>
-          <MyText style={[{color: 'white'}, styles.heading]}>
-            Nasa Image and Video Library
-          </MyText>
-          <MyText style={styles.desc}>
-            Query Nasa's database for information you need
-          </MyText>
-        </BlurView>
-      </View>
-    </MyView2>
+    <Pressable onPress={() => navigation.push('SearchScreen')}>
+      <MyView2 style={styles.container}>
+        <FastImage
+          source={{
+            uri: 'https://cdn.arstechnica.net/wp-content/uploads/2022/04/SLS-Apr-21-2022-8868-800x534.jpg',
+          }}
+          style={{height: '100%', width: '100%', borderRadius: 15}}
+        />
+        <View style={styles.overlay}>
+          <BlurView
+            style={styles.blurContainer}
+            blurType="dark"
+            blurAmount={3}
+            blurRadius={30}>
+            <MyText style={[{color: 'white'}, styles.heading]}>
+              Nasa Image and Video Library
+            </MyText>
+            <MyText style={styles.desc}>
+              Query Nasa's database for information you need
+            </MyText>
+          </BlurView>
+        </View>
+      </MyView2>
+    </Pressable>
   );
 };
 
