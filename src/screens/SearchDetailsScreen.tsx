@@ -38,7 +38,7 @@ const SearchDetailsScreen = ({route, navigation}: Props) => {
   const getMedias = async () => {
     try {
       const res = await axios.get(href);
-      console.log({media: res.data});
+      //   console.log({media: res.data});
       let pics = res.data.filter((item: string) => item.endsWith('.jpg'));
       let vids = res.data.filter((item: string) => item.endsWith('.mp4'));
       pics = pics.map((item: string) => {
@@ -47,9 +47,12 @@ const SearchDetailsScreen = ({route, navigation}: Props) => {
       vids = vids.map((item: string) => {
         return item.replace('http', 'https');
       });
-      console.log({vids, pics});
+      //   console.log({vids, pics});
       setPictures(pics);
-      setVideos(vids[0]);
+      if (vids.length > 0) {
+        setVideos(vids[0]);
+      }
+
       setLoading(false);
     } catch (error) {
       console.log({error});
@@ -70,6 +73,7 @@ const SearchDetailsScreen = ({route, navigation}: Props) => {
       <SafeAreaView style={{flex: 1}}>
         <ScrollView>
           <>
+            {/* {console.log({vvvvvv: videos})} */}
             <Pressable
               style={{marginBottom: 8, paddingLeft: 8}}
               onPress={() => navigation.pop()}>
@@ -97,12 +101,21 @@ const SearchDetailsScreen = ({route, navigation}: Props) => {
                   <Button title="Images" onPress={() => setIsVisible(true)} />
                 )}
 
-                {videos.length > 0 && <Button title="Videos" />}
+                <View style={{width: 8}} />
+
+                {videos.length > 0 && (
+                  <Button
+                    title="Video"
+                    onPress={() =>
+                      navigation.push('VideoScreen', {video: videos})
+                    }
+                  />
+                )}
               </View>
             </MyView3>
 
             <MyText style={{padding: 8}}>{data[0].description}</MyText>
-            {console.log({pictures})}
+            {/* {console.log({pictures})} */}
             <ImageView
               images={pictures}
               imageIndex={0}
@@ -132,4 +145,5 @@ const styles = StyleSheet.create({
   date: {
     fontWeight: '500',
   },
+  btn: {},
 });

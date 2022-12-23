@@ -9,6 +9,7 @@ import CuriosityScreen, {CuriosityDataType} from '../screens/CuriosityScreen';
 import CuriosityFullSlide from '../screens/CuriosityFullSlide';
 import SearchScreen, {ResultItemType} from '../screens/SearchScreen';
 import SearchDetailsScreen from '../screens/SearchDetailsScreen';
+import VideoScreen from '../screens/VideoScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -34,6 +35,9 @@ export type RootStackParamList = {
   };
   SearchScreen: undefined;
   SearchDetailsScreen: ResultItemType;
+  VideoScreen: {
+    video: string;
+  };
 };
 
 const RootStack = () => {
@@ -57,6 +61,7 @@ const RootStack = () => {
             name="CuriosityFullSlide"
             component={CuriosityFullSlide}
           />
+          <Stack.Screen name="VideoScreen" component={VideoScreen} />
         </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
