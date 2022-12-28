@@ -8,6 +8,7 @@ import {
   FlatList,
   Pressable,
   ListRenderItem,
+  Platform,
 } from 'react-native';
 import React, {useState} from 'react';
 import MyView from '../components/MyView';
@@ -122,7 +123,14 @@ const SearchScreen = ({navigation}: Props) => {
           <TextInput
             selectionColor={'#d4d4d4'}
             placeholder="Search"
-            style={[styles.input, {color: isDark ? 'white' : 'black'}]}
+            style={[
+              styles.input,
+              {
+                color: isDark ? 'white' : 'black',
+                paddingHorizontal: 8,
+                paddingVertical: 0,
+              },
+            ]}
             value={query}
             onChangeText={val => setQuery(val)}
           />
