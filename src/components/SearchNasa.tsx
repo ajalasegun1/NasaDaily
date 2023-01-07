@@ -9,6 +9,7 @@ import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../navigation/RootStack';
 import MyViewSub from './MyViewSub';
+import {myBackgroundDark} from './themed/Colors';
 
 type SearchNasaNavigationType = NativeStackNavigationProp<
   RootStackParamList,
@@ -40,7 +41,11 @@ const SearchNasa = () => {
               </MyText>
             </BlurView>
           ) : (
-            <MyViewSub style={styles.blurContainer}>
+            <MyViewSub
+              style={[
+                styles.blurContainer,
+                {backgroundColor: myBackgroundDark.layer_bg},
+              ]}>
               <MyText style={[{color: 'white'}, styles.heading]}>
                 Nasa Image and Video Library
               </MyText>

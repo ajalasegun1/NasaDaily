@@ -129,6 +129,7 @@ const SearchScreen = ({navigation}: Props) => {
                 color: isDark ? 'white' : 'black',
                 paddingHorizontal: 8,
                 paddingVertical: 0,
+                // backgroundColor: 'black',
               },
             ]}
             value={query}
@@ -140,7 +141,9 @@ const SearchScreen = ({navigation}: Props) => {
         </MyText>
         {loading && <MyText style={styles.noteText2}>Loading...</MyText>}
 
-        <Button title="Search" onPress={() => check()} />
+        <View style={{paddingHorizontal: 8, marginBottom: 10}}>
+          <Button title="Search" onPress={() => check()} />
+        </View>
 
         <FlatList
           renderItem={renderItem}
@@ -164,7 +167,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     paddingHorizontal: 10,
-    paddingVertical: 16,
+    paddingVertical: 8,
     borderRadius: 15,
     marginHorizontal: 8,
   },

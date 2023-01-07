@@ -3,7 +3,7 @@ import React, {FC, ReactNode} from 'react';
 import {myBackground, myBackgroundDark} from './themed/Colors';
 
 export type MyViewProps2 = {
-  style?: ViewStyle;
+  style?: ViewStyle | ViewStyle[];
   children?: ReactNode;
 };
 const MyViewSub: FC<MyViewProps2> = ({style, children}) => {

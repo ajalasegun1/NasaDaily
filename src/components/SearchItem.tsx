@@ -1,6 +1,6 @@
-import {Platform, Pressable, StyleSheet, Text, View} from 'react-native';
+import {Platform, Pressable, StyleSheet} from 'react-native';
 import React, {FC} from 'react';
-import {ResultItemType, ResultType} from '../screens/SearchScreen';
+import {ResultItemType} from '../screens/SearchScreen';
 import MyView2 from './MyView2';
 import {HEIGHT} from '../constants';
 import FastImage from 'react-native-fast-image';
@@ -10,6 +10,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../navigation/RootStack';
 import {useNavigation} from '@react-navigation/native';
 import MyViewSub from './MyViewSub';
+import {myBackgroundDark} from './themed/Colors';
 type SearchItemNavProp = NativeStackNavigationProp<
   RootStackParamList,
   'SearchDetailsScreen'
@@ -42,7 +43,11 @@ const SearchItem: FC<Props> = ({item}) => {
             </MyText>
           </BlurView>
         ) : (
-          <MyViewSub style={styles.blurContainer}>
+          <MyViewSub
+            style={[
+              styles.blurContainer,
+              {backgroundColor: myBackgroundDark.layer_bg},
+            ]}>
             <MyText
               style={[{color: 'white'}, styles.heading]}
               numberOfLines={2}>
@@ -53,18 +58,6 @@ const SearchItem: FC<Props> = ({item}) => {
             </MyText>
           </MyViewSub>
         )}
-        {/* <BlurView
-          style={styles.blurContainer}
-          blurType="light"
-          blurAmount={3}
-          blurRadius={3}>
-          <MyText style={[{color: 'white'}, styles.heading]} numberOfLines={2}>
-            {item.data[0].title}
-          </MyText>
-          <MyText style={styles.desc} numberOfLines={2}>
-            {item.data[0].description}
-          </MyText>
-        </BlurView> */}
       </MyView2>
     </Pressable>
   );
