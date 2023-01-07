@@ -9,7 +9,8 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "bundle": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
-    "debugApk": "cd android && ./gradlew assembleDebug"
+    "debugApk": "cd android && ./gradlew assembleDebug",
+    "releaseBundle": "cd android && ./gradlew bundleRelease"
   },
   "dependencies": {
     "@react-native-community/blur": "^4.3.0",
