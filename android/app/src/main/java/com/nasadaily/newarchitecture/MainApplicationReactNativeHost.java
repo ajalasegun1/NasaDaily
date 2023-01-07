@@ -1,4 +1,4 @@
-package com.nasadaily.newarchitecture;
+package com.nasadaily.segunajala.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.nasadaily.BuildConfig;
-import com.nasadaily.newarchitecture.components.MainComponentsRegistry;
-import com.nasadaily.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.nasadaily.segunajala.BuildConfig;
+import com.nasadaily.segunajala.newarchitecture.components.MainComponentsRegistry;
+import com.nasadaily.segunajala.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

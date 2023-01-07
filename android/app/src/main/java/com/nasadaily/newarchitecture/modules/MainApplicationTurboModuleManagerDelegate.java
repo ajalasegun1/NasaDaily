@@ -1,4 +1,4 @@
-package com.nasadaily.newarchitecture.modules;
+package com.nasadaily.segunajala.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

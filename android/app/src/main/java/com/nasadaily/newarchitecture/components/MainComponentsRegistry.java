@@ -1,4 +1,4 @@
-package com.nasadaily.newarchitecture.components;
+package com.nasadaily.segunajala.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

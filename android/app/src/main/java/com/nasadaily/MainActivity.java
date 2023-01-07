@@ -1,4 +1,4 @@
-package com.nasadaily;
+package com.nasadaily.segunajala;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
