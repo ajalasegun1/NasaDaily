@@ -1,3 +1,6 @@
+# Google Play Store link
+https://play.google.com/store/apps/details?id=com.nasadaily.segunajala
+
 # NasaDaily
 A react native project
 # About NasaDaily
